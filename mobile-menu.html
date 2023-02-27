@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Mobile-Menu</title>
+	<style type="text/css">
+		body {
+			background-color: #000;
+			margin: 0;
+		}
+		ul {
+		  	list-style: none;
+		  	padding: 0;
+		}
+		.navbar {
+			bottom: 0;
+			background-color: #ffffff;
+			margin: 0;
+			padding: 15px;
+			position: fixed;
+			top: 0;
+			width: 288px;
+			transform: translate3d(-100%, 0, 0);
+			transition: transform .2s linear;
+		}
+		.navbar ul li{
+			padding: 15px 20px;
+		}
+		.menu-btn span {
+			background-color: #ffffff;
+			height: 2px;
+			width: 16px;
+			right: 15px;
+			top: 15px;
+			position: absolute;
+			transition: all .3s ease-in-out;
+			cursor: pointer;
+		}
+
+		.menu-btn span:first-child {
+		  transform: translate3d(0, -4px, 0);
+		}
+
+		.menu-btn span:last-child {
+		  transform: translate3d(0, 4px, 0);
+		}
+
+		.menu-btn--on span:first-child {
+		  transform: rotate(135deg) translate3d(0, 0, 0);
+		}
+
+		.menu-btn--on span:last-child {
+		  transform: rotate(-135deg) translate3d(0, 0, 0);
+		}
+
+		.menu-btn--on span:nth-child(2) {
+		  opacity: 0;
+		}
+
+		.menu--open {
+		  transform: translate3d(0, 0, 0);
+		}
+		.main-content{
+			font-size: 50px;
+			color: #fff;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+		}
+	</style>
+</head>
+<body>
+	<header class="site-header">
+		<nav class="navbar">
+		  	<ul>
+			    <li>About Us</li>
+			    <li>Blog</li>
+			    <li>Visit our web</li>
+			    <li>Visit our web</li>
+			    <li>Visit our web</li>
+		  	</ul> 
+		</nav>
+		<div class="menu-btn">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<div class="main-content">
+			Mobile Menu
+		</div>
+	</header>
+	<script type="text/javascript" src="jquery-3.6.3.min.js"></script>
+	<script type="text/javascript">
+		function toggleClass(targetElement, addedClass) {
+		  if (targetElement.classList.contains(addedClass)) {
+		    targetElement.classList.remove(addedClass);
+		  }
+		  else {
+		    targetElement.classList.add(addedClass);
+		  }
+		};
+		document.querySelector('.menu-btn').addEventListener('click', function() {
+		  toggleClass(document.querySelector('.navbar'), 'menu--open');
+		  toggleClass(document.querySelector('.menu-btn'), 'menu-btn--on');
+		});
+	</script>
+</body>
+</html>

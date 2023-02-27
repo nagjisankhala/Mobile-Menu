@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>menu-toggle</title>
+	<style type="text/css">
+		.menu-toggle {
+			width: 40px;
+			height: 40px;
+			position: relative;
+			top: 10px;
+			float: right;
+			z-index: 9;
+		}
+
+		.menu-toggle span {
+			position: absolute;
+			width: 30px;
+			height: 2px;
+			background: #0094FC;
+			left: 0px;
+			-webkit-transition: all .3s;
+			transition: all .3s;
+		}
+
+		.menu-toggle span:nth-child(1) {
+		    top: 16px;
+		}
+
+		.menu-toggle span:nth-child(2) {
+		    top: 24px;
+		}
+
+		.menu-toggle span:nth-child(3) {
+		    top: 32px;
+		}
+
+		.menu-toggle.active span:nth-child(1) {
+		    top: 25px;
+		    -webkit-transform: rotateZ(45deg);
+		    transform: rotateZ(45deg);
+		}
+
+		.menu-toggle.active span:nth-child(2) {
+		    background: transparent;
+		}
+
+		.menu-toggle.active span:nth-child(3) {
+		    top: 25px;
+		    -webkit-transform: rotateZ(-45deg);
+		    transform: rotateZ(-45deg);
+		}
+
+		.wrap {
+			position: relative;
+			overflow: hidden;
+			height: 9000px;
+		}
+
+		.navbar {
+			width: 300px;
+			background-color: #e7e7e7;
+			height: 500px;
+			position: absolute;
+			right: -550px;
+			top: 0;
+			transition: right linear .2s;
+			padding: 20px;
+			margin-top: 50px;
+		}
+
+		.open {
+			right: 0px;
+			transition: right linear .2s;
+		}
+		.navbar ul{
+			list-style: none;
+			padding: 0;
+		}
+		.navbar li {
+		    margin-bottom: 20px;
+		    font-size: 20px;
+		    border-bottom: 1px solid #000;
+		    padding-bottom: 5px;
+		}
+		.navbar a {
+		    text-decoration: none;
+		    color: #555;
+		}
+
+		.navbar a:hover {
+		    color: #0094FC;
+		}
+		/*--popup--*/
+		.popup {
+			  width: 100%;
+			  height:500px;
+			  background: rgba(0, 0, 0, 0.4);
+			  display: none;
+			  position: absolute;
+			  top: 0;
+			  left: 0;
+			  right: 0;
+			  bottom: 0;
+			  text-align: center;
+        }
+        .popup__content {
+		    width: 80%;
+		    padding: 40px;
+		    background: #e7e7e7;
+		    color: black;
+		    position: relative;
+		    top: 50%;
+		    left: 50%;
+		    transform: translate(-50%, -50%);
+		    box-sizing: border-box;
+		}
+		.popup__content input{
+			width: 40%;
+			height: 40px;
+			margin-bottom: 10px;
+			outline: none;
+			border: 1px solid #000;
+			background: transparent;
+		}
+		.close {
+		      position: absolute;
+		      right: 20px;
+		      top: 20px;
+		      width: 20px;
+		      display: block;
+		}
+		.close  span {
+	        cursor: pointer;
+	        position: fixed;
+	        width: 20px;
+	        height: 3px;
+	        background: #099ccc;
+	    }
+	    .close span:nth-child(1) {
+          transform: rotate(45deg);
+        }
+        .close span:nth-child(2) {
+          transform: rotate(135deg);
+        }
+        button {
+				  background: #099ccc;
+				  color: white;
+				  margin: 30px;
+				  padding: 5px 30px;
+				  cursor: pointer;
+				  border: none;
+				}	
+				#indicator{
+				  position: fixed;
+				  top:0;
+				  left:0;
+				  height: 6px;
+				  border-radius: 10px;
+				  background-color: red;
+				  z-index: 999;
+				}
+				/* Scrollbar Styling */
+				::-webkit-scrollbar {
+				    width: 10px;
+				}
+				 
+				::-webkit-scrollbar-track {
+				    -webkit-border-radius: 10px;
+				    border-radius: 10px;
+				}
+
+				::-webkit-scrollbar-thumb {
+				    -webkit-border-radius: 10px;
+				    border-radius: 10px;
+				    background: Red; 
+				}
+				.top{
+					background: #000;
+					width: 50px;
+					height: 50px;
+					border-radius: 50%;
+					position: fixed;
+					bottom: 25px;
+					right: 25px;
+					cursor: pointer;
+				}
+				.top a{
+					width: 10px;
+			    height: 10px;
+			    border-right: 3px solid #fff;
+			    border-bottom: 3px solid #fff;
+			    position: absolute;
+			    top: 44%;
+			    left: 38%;
+			    transform: rotate(225deg);
+			}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+	    <nav class="navbar">
+		    <ul>
+			    <li><a href="#">Home</a></li>
+			    <li><a href="#">About</a></li> 
+			    <li><a href="#">Contact</a></li>
+			    <li><a href="#">Offer</a></li>
+			    <li><a href="#">Dog</a></li>
+		    </ul>
+	    </nav>
+	    <div class="menu-toggle">
+		    <span></span>
+		    <span></span>
+		    <span></span>
+	    </div>
+	    <!--- popup --->
+	    <button>show</button>
+	    		<section class="popup">
+	    			<div class="popup__content">
+	    				<div class="close">
+					      <span></span>
+					      <span></span>
+					    </div>
+					   <input type="text" name="text" placeholder="first name ">
+					   <input type="text" name="text" placeholder="second name ">
+					   <input type="text" name="text" placeholder="last name ">
+				  </div>
+				</section>
+				<div id="indicator"></div>
+				<div class="top"><a href="#"></a></div>
+	</div>
+	<script type="text/javascript" src="jquery-3.6.3.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			  $(".menu-toggle").click(function() {
+			    $(this).toggleClass("active");
+			    $('.navbar').toggleClass("open");
+			  });
+			  $("button").click(function() {
+				  $(".popup").fadeIn(500);
+				});
+				$(".close").click(function() {
+				  $(".popup").fadeOut(500);
+				});
+			});
+		$(window).on('scroll', function () {
+		  var scrollPos = $(window).scrollTop()
+		  var winHeight = $(window).height()
+		  var docHeight = $(document).height()
+		  var perc = 100 * scrollPos / (docHeight - winHeight)
+		  $('#indicator').width(perc + '%')
+		})
+		$(window).scroll(function() {
+	    if ($(this).scrollTop() > 100) {
+	        $('.top').fadeIn();
+	    } else {
+	        $('.top').fadeOut();
+	    }
+	});
+	</script>
+</body>
+</html>

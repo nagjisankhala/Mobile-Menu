@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Tab</title>
+	<style type="text/css">
+		body{
+			margin: 0;
+			background: #000;
+			font-family: 'Poppins', sans-serif;
+			line-height: 2em; 
+		}
+		ul{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		.wrapper{
+			max-width: 1200px;
+			margin: 25px auto;
+			position: relative;
+		}
+
+		.tab-block {
+		  	margin: 0 auto;
+	  	}
+
+		.tabs {
+		  	display: flex;
+		  	justify-content: center; 
+		}
+
+		.tab-link {
+			margin: 0 2%;
+			list-style: none;
+			padding: 10px 40px;
+			color: #fff;
+			cursor: pointer;
+			font-weight: 500;
+			transition: all ease 0.5s;
+			border-bottom: solid 3px rgba(255, 255, 255, 0);
+			letter-spacing: 1px; 
+		}
+
+		.tab-link:hover {
+			color: #999;
+			border-color: #999;
+		}
+
+		.tab-link.active {
+			color: #333;
+			border-color: #333;
+		}
+
+		.tab-link:nth-of-type(1).active {
+			color: #EE6534;
+			border-color: #EE6534; 
+		}
+
+		.tab-link:nth-of-type(2).active {
+			color: #1790D2;
+			border-color: #1790D2;
+		}
+
+		.tab-link:nth-of-type(3).active {
+			color: #EEC63B;
+			border-color: #EEC63B; 
+		}
+
+		.tab-link:nth-of-type(4).active {
+			color: #093;
+			border-color: #093; 
+		}
+
+		.tab-info {
+			padding: 40px 80px; 
+		}
+
+		.tab-content {
+			display: none;
+			text-align: center;
+			color: #888;
+			font-weight: 300;
+			font-size: 15px;
+			opacity: 0;
+			transform: translateY(15px);
+			animation: fadeIn 0.5s ease 1 forwards; 
+		}
+
+		.tab-content.active {
+			display: block; 
+		}
+
+		@keyframes fadeIn {
+			100% {
+			    opacity: 1;
+			    transform: none; }
+		}
+	
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+			
+		<div class="tab-block">
+			<ul class="tabs">
+					<li class="tab-link active" data-tab="1">HTML</li>
+					<li class="tab-link" data-tab="2">CSS</li>
+					<li class="tab-link" data-tab="3">jQuery</li>
+					<li class="tab-link" data-tab="4">Bootstrap</li>
+			</ul>
+		</div>
+
+		<div class="tab-info">
+
+			<div id="tab-1" class="tab-content active">
+				<p>What is HTML?</p>
+				<ul>
+					<li>HTML stands for Hyper Text Markup Language</li>
+					<li>HTML is the standard markup language for creating Web pages</li>
+					<li>HTML describes the structure of a Web page</li>
+					<li>HTML consists of a series of elements</li>
+					<li>HTML elements tell the browser how to display the content</li>
+					<li>HTML elements label pieces of content such as "this is a heading", "this is a paragraph", "this is a link", etc.</li>
+				</ul>
+			</div>
+
+			<div id="tab-2" class="tab-content">CSS stands for Cascading Style Sheets. CSS describes how HTML elements are to be displayed on screen, paper, or in other media. CSS saves a lot of work. It can control the layout of multiple web pages all at once.</div>
+
+			<div id="tab-3"class="tab-content">jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.</div>
+
+			<div id="tab-4"class="tab-content">
+				<p>Bootstrap 3 is the most stable version of Bootstrap, and it is still supported by the team for critical bugfixes and documentation changes.</p>
+				<p>Bootstrap 4 is a newer version of Bootstrap; with new components, faster stylesheet and more responsiveness. However, Internet Explorer 9 and down is not supported.</p>
+				<p>Bootstrap 5 is the newest version of Bootstrap; with a smooth overhaul. However, Internet Explorer 11 and down is not supported, and jQuery is replaced with vanilla JavaScript.</p>
+			</div>
+
+		</div>
+	</div>
+	<script type="text/javascript" src="jquery-3.6.3.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.tab-link').click( function() {
+			
+			var tabID = $(this).attr('data-tab');
+			
+			$(this).addClass('active').siblings().removeClass('active');
+			
+			$('#tab-'+tabID).addClass('active').siblings().removeClass('active');
+		});
+		})
+	</script>
+</body>
+</html>
